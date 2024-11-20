@@ -1,23 +1,27 @@
 "use client";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@nextui-org/button";
-import { Input } from "@nextui-org/react";
+import { Input, Radio, RadioGroup } from "@nextui-org/react";
 import { Controller, useForm } from "react-hook-form";
 
 import { saveForm } from "@/components/PersonalInfoForm/saveForm";
-import { FormData, formSchema } from "@/components/PersonalInfoForm/formSchema";
+import {
+  formSchema,
+  PropertyFormData,
+} from "@/components/PersonalInfoForm/formSchema";
 
-export const PersonalInfoForm = () => {
+export const PropertyInfoForm = () => {
   const {
     handleSubmit,
     control,
     formState: { errors },
-  } = useForm<FormData>({
+  } = useForm<PropertyFormData>({
     mode: "onChange",
     resolver: zodResolver(formSchema),
   });
 
-  const onSubmit = (data: FormData) => {
+  const onSubmit = (data: PropertyFormData) => {
     const result = saveForm(data);
 
     console.log(result);
@@ -30,17 +34,14 @@ export const PersonalInfoForm = () => {
         name="firstName"
         render={({ field }) => {
           return (
-            <Input
-              {...field}
-              errorMessage={errors.firstName?.message}
-              isInvalid={!!errors.firstName}
-              label="First Name"
-              name="firstName"
-              placeholder="First Name"
-            />
+            <RadioGroup name="propertyType">
+              <Radio value="singleFamily">Single family</Radio>
+              <Radio value="multiFamily">Multi family</Radio>
+            </RadioGroup>
           );
         }}
       />
+
       <Controller
         control={control}
         name="lastName"

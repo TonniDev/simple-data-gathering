@@ -4,7 +4,7 @@ import { Snippet } from "@nextui-org/snippet";
 import { button as buttonStyles } from "@nextui-org/theme";
 
 import { GithubIcon } from "@/components/icons";
-import { PersonalInfoForm } from "@/components/PersonalInfoForm/PersonalInfoForm";
+import { PropertyInfoForm } from "@/components/PersonalInfoForm/PropertyInfoForm";
 import { subtitle, title } from "@/components/primitives";
 import { siteConfig } from "@/config/site";
 
@@ -46,7 +46,7 @@ export default function Home() {
       </div>
 
       {/*TODO Form goes here*/}
-      <PersonalInfoForm />
+      <PropertyInfoForm />
 
       <div className="mt-8">
         <Snippet hideCopyButton hideSymbol variant="bordered">
